@@ -1,0 +1,81 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+    link(rel="stylesheet" href="/index.css")
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet")
+    title Address 2 address
+  body
+    header 
+      h1 Address ➡ Address
+      #info ❔
+    #info-box
+      #info-message
+        div ✔ 이 사이트에서는 키워드를 입력하면 카카오 맵 API를 통해 검색 결과가 담긴 CSV파일을 다운로드할 수 있습니다. 다수의 데이터를 검색할 때 유용합니다.
+        div ✔ 
+          span(style="color: #4DF") 장소 검색
+          span 은 특정 장소, 건물, 랜드마크 등을 검색할 때 유용합니다.
+        div ✔ 
+          span(style="color: #4DF") 주소 검색
+          span 은 특정 주소의 정보(관할 지역, 행정동 등)을 검색할 때 유용합니다.
+    main
+      .main-container
+        .data-container
+          #download-content
+            h2 📝 데이터 입력
+            textarea#text(name="", cols="50", rows="10", placeholder="예) 강남 다이소, 광주 북구 설죽로214번길, 충주 스포츠센터")
+            span#sepbox
+              h3 각 주소 구분기호
+              .sep-container
+                input.sep-input(type="radio" id="sep1" name="sep" value="," checked=true)
+                label.sep-label(for="sep1") ,
+                input.sep-input(type="radio" id="sep2" name="sep" value="/")
+                label.sep-label(for="sep2") /
+                input.sep-input(type="radio" id="sep3" name="sep" value="|")
+                label.sep-label(for="sep3") |
+                input.sep-input(type="radio" id="sep4" name="sep" value=";")
+                label.sep-label(for="sep4") ;
+                input.sep-input(type="radio" id="sep5" name="sep" value="custom")
+                label.sep-label#sep-last(for="sep5") 
+                  span 직접입력
+                  input#custom-seperate(type="text")
+              .button-container
+                button(value="place").data-button#download 장소 검색
+                  div Click to download!
+                button(value="address").data-button#download 주소 검색
+                  div Click to download!
+          #upload-content 
+            h2#upload-title 💽 데이터 업로드
+            input#upload-input(type="file" accept=".csv" style="display: none")
+            button(value="place").data-button#upload 장소 검색
+              div(style="font-size: 16px") Click or Drag & Drop!
+            button(value="address").data-button#upload 주소 검색
+              div(style="font-size: 16px") Click or Drag & Drop!
+      h1 　
+      .main-container
+        h2 🔔 Info
+        h3 업로드할 CSV 형식
+        div 
+          table 
+            tr 
+              td 강남 다이소
+            tr 
+              td 광주 북구 설죽로214번길
+            tr 
+              td 충주 스포츠센터
+            tr 
+              td ...
+        h5 ✔ 1열에만 데이터를 작성해주세요. CSV 형식을 따르지 않을 경우 예상치 못한 결과가 나올 수 있습니다.
+        h5 ✔ 업로드 시 바로 변환된 데이터가 다운로드 됩니다.
+    footer1
+      div Email: k37237280@gmail.com
+      div Developed by kyh
+
+    script(type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5a6a7c5f05d6b0f7b4289973bd58ea2d&libraries=services")
+    script(src="/index.js")
